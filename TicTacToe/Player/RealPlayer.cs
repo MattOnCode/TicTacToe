@@ -9,7 +9,7 @@ namespace TicTacToe {
 
         public string player;
 
-        // Gets the player
+        // Gets the real player
         public string GetPlayer() {
             return player;
         }

@@ -26,7 +26,7 @@ namespace TicTacToe {
         public void PlayGame(string[,] TicTacToeBoard, IPlayer player1, IPlayer player2) {
             _gameVisualizer.InitalizeBoard(TicTacToeBoard); // Creates a new board
 
-            // Requests the player to choose either X or O
+            // Loops until the player chooses either X or O
             Console.WriteLine("Player1, Do you wish to be X or O?");
             while (true) {
                 var player1Name = Console.ReadLine().ToUpper();
