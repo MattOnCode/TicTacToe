@@ -27,6 +27,7 @@ namespace TicTacToe {
             _gameVisualizer.InitalizeBoard(TicTacToeBoard); // Creates a new board
 
             // Loops until the player chooses either X or O
+            Console.WriteLine(); // Blank Line, supports all OS
             Console.WriteLine("Player1, Do you wish to be X or O?");
             while (true) {
                 var player1Name = Console.ReadLine().ToUpper();
@@ -34,23 +35,43 @@ namespace TicTacToe {
                     player1.SetPlayer(player1Name);
                     break;
                 }
-
+                Console.WriteLine();
+                Console.WriteLine("That is not a valid answer!");
+                Console.WriteLine("Player1, Do you wish to be X or O?");
             }
             player2.SetPlayer(player1.GetPlayer().ToUpper().Equals("X") ? "O" : "X"); // Automatically set the other player to the opposite
+            Console.Clear(); // Clears console
 
             var Winner = string.Empty; // Resets winner
             var currentPlayer = player1; // Set's player 1to play first
 
             // The game will continue to play until there's a winner
             while (Winner.Equals(string.Empty)) {
-                player1.Play(TicTacToeBoard);
-                player2.Play(TicTacToeBoard);
-                _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard);
-                Winner = _gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer());
-                currentPlayer = currentPlayer.Equals(player1) ? player2 : player1;
+
+                _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
+                Console.WriteLine(); // Blank Line
+                Console.WriteLine("It's player 1's Turn!");
+                player1.Play(TicTacToeBoard); // Player 1's Turn
+                Winner = _gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer()); // Checks to see if the player is a winner
+                Console.Clear(); // Clears console
+
+                _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
+                Console.WriteLine(); // Blank Line
+                Console.WriteLine("It's player 2's Turn!");
+                player2.Play(TicTacToeBoard); // Player 2's Turn
+                Winner = _gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer()); // Checks to see if the player is a winner
+                Console.Clear(); // Clears console
+
+                currentPlayer = currentPlayer.Equals(player1) ? player2 : player1; // Switches players
             }
 
-            Console.WriteLine("The winner is {0}", Winner); // Outputs the winner
+            _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("The winner is {0}!", Winner); // Outputs the winner
+            Console.WriteLine();
+            Console.WriteLine("Press ENTER to quit");
+            Console.ReadLine();
         }
     }
 }

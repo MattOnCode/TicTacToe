@@ -26,13 +26,44 @@ namespace TicTacToe {
         /// </summary>
         /// <param name="TicTacToeBoard">The TicTacToe Board</param>
         public void Play(string[,] TicTacToeBoard) {
+        
+            int positionX; // The X position for the players play
+            int positionY; // The Y position for the players play
+
+            // Prompts for the users X position
             Console.WriteLine("Enter position X for {0}", player);
-            int positionX = Int32.Parse(Console.ReadLine());
+            String userXInput = Console.ReadLine();
+            while(true) { // Strict validation for the users input
+                if (Int32.TryParse(userXInput, out positionX) == true) {
+                    if (positionX <= 2) {
+                        break;
+                    }
+                }
+                Console.WriteLine(); // Blank Line
+                Console.WriteLine("That is not a valid input!  Your input must be (0, 1, 2)");
+                Console.WriteLine("Enter position X for {0}", player);
+                userXInput = Console.ReadLine();
+            }
 
+            // Prompts for the users Y position
             Console.WriteLine("Enter position Y for {0}", player);
-            int positionY = Int32.Parse(Console.ReadLine());
+            String userYInput = Console.ReadLine();
+            while (true) { // Strict validation for the users input
+                if (Int32.TryParse(userYInput, out positionY) == true) {
+                    if (positionY <= 2) {
+                        break;
+                    }
+                }
+                Console.WriteLine(); // Blank Line
+                Console.WriteLine("That is not a valid input! Your input must be (0, 1, 2)");
+                Console.WriteLine("Enter position Y for {0}", player);
+                userYInput = Console.ReadLine();
+            }
 
-            if (TicTacToeBoard[positionX, positionY].Equals(" ")) TicTacToeBoard[positionX, positionY] = player;
+            // Updates the board with the users play
+            if (TicTacToeBoard[positionX, positionY].Equals(" ")) {
+                TicTacToeBoard[positionX, positionY] = player;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@
             var HorizontalVictory = 0;
             var VerticalVictory = 0;
             var DiagonalVictory = 0;
+            var tilesFilled = 0;
 
             // Checks for horizontal victories by cyling through the board
             for (int i = 0; i < ticTacToeBoard.GetLength(0); i++) {
@@ -49,8 +50,20 @@
                 }
             }
 
-            // If the player has won, return the player. If not, return 'false' (as an empty string)
-            return HorizontalVictory == 3 || VerticalVictory == 3 || DiagonalVictory == 3 ? currentPlayer : string.Empty;
+            // Checks to see if there's no winner
+            for (int i = 0; i < ticTacToeBoard.GetLength(0); i++) {
+                for (int j = 0; j < ticTacToeBoard.GetLength(0); j++) {
+                    if(!ticTacToeBoard[i, j].Equals(" ")) {
+                        ++tilesFilled;
+                    }
+                }
+            }
+
+            if(tilesFilled <= 9) { // Checks if boards full
+                return HorizontalVictory == 3 || VerticalVictory == 3 || DiagonalVictory == 3 ? currentPlayer : string.Empty; // returns player if they've won
+            } else {
+                return "Nobody"; // Returns nobody if nobody has won
+            }
         }
     }
 }

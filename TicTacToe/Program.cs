@@ -13,6 +13,8 @@ namespace TicTacToe {
             GameVisualizer gameVisualizer = new GameVisualizer(); // Creates a new game visualizer instance
             GameManager gameManager = new GameManager(gameVisualizer, gameEngine); // Creates a new game manager instance
 
+            gameVisualizer.printInstructions(); // Prints the instructions
+
             // Loops until the player has chosen an option
             while (true) {
                 Console.WriteLine("Choose playing mode - 2PLAYER or AI?");
@@ -26,6 +28,8 @@ namespace TicTacToe {
                     player2 = new AIPlayer();
                     break;
                 }
+                Console.WriteLine(); // Blank line
+                Console.WriteLine("That is not a valid option");
             }
 
             gameManager.PlayGame(TicTacToeBoard, player1, player2); // Starts a new game
