@@ -32,6 +32,9 @@ namespace TicTacToe {
             }
         }
 
+        /// <summary>
+        /// This function prints the instructions for when the applications launched
+        /// </summary>
         public void printInstructions() {
             Console.WriteLine("What's TicTacToe?");
             Console.WriteLine("Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a");
