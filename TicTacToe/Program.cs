@@ -3,7 +3,6 @@
 namespace TicTacToe {
     class Program {
 
-        [STAThread]
         static void Main(string[] args) {
             string[,] TicTacToeBoard = new string[3, 3]; // Creates a new board
             IPlayer player1; // Declares player 1

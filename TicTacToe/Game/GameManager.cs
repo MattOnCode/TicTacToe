@@ -4,8 +4,8 @@ namespace TicTacToe {
     class GameManager {
 
         // Creates local class variables for other classes
-        private readonly GameVisualizer _gameVisualizer;
-        private readonly GameEngine _gameEngine;
+        private readonly GameVisualizer gameVisualizer;
+        private readonly GameEngine gameEngine;
 
         /// <summary>
         /// Constructor for GameManager
@@ -13,8 +13,8 @@ namespace TicTacToe {
         /// <param name="argGameVisualizer">Passes in Game Visualizer class</param>
         /// <param name="argGameEngine">Passes in Game Engine class</param>
         public GameManager(GameVisualizer argGameVisualizer, GameEngine argGameEngine) {
-            _gameVisualizer = argGameVisualizer;
-            _gameEngine = argGameEngine;
+            gameVisualizer = argGameVisualizer;
+            gameEngine = argGameEngine;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace TicTacToe {
         /// <param name="player1">Player 1</param>
         /// <param name="player2">Player 2</param>
         public void PlayGame(string[,] TicTacToeBoard, IPlayer player1, IPlayer player2) {
-            _gameVisualizer.InitalizeBoard(TicTacToeBoard); // Creates a new board
+            gameVisualizer.InitalizeBoard(TicTacToeBoard); // Creates a new board
 
             // Loops until the player chooses either X or O
             Console.WriteLine(); // Blank Line, supports all OS
@@ -48,24 +48,24 @@ namespace TicTacToe {
             // The game will continue to play until there's a winner
             while (Winner.Equals(string.Empty)) {
 
-                _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
+                gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
                 Console.WriteLine(); // Blank Line
                 Console.WriteLine("It's player 1's Turn!");
                 player1.Play(TicTacToeBoard); // Player 1's Turn
-                Winner = _gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer()); // Checks to see if the player is a winner
+                Winner = gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer()); // Checks to see if the player is a winner
                 Console.Clear(); // Clears console
 
-                _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
+                gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
                 Console.WriteLine(); // Blank Line
                 Console.WriteLine("It's player 2's Turn!");
                 player2.Play(TicTacToeBoard); // Player 2's Turn
-                Winner = _gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer()); // Checks to see if the player is a winner
+                Winner = gameEngine.CheckForVictory(TicTacToeBoard, currentPlayer.GetPlayer()); // Checks to see if the player is a winner
                 Console.Clear(); // Clears console
 
                 currentPlayer = currentPlayer.Equals(player1) ? player2 : player1; // Switches players
             }
 
-            _gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
+            gameVisualizer.PrintTicTacToeBoard(TicTacToeBoard); // Prints out the board
             Console.WriteLine();
             Console.WriteLine("-----------------------------");
             Console.WriteLine("The winner is {0}!", Winner); // Outputs the winner
