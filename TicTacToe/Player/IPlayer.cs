@@ -1,9 +1,11 @@
-﻿namespace TicTacToe {
-    interface IPlayer {
+﻿namespace TicTacToe.Player
+{
+    interface IPlayer 
+    {
 
         string GetPlayer();
         void SetPlayer(string player);
-        void Play(string[,] TicTacToeBoard);
+        void Play(string[,] ticTacToeBoard);
 
     }
 }

@@ -1,22 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TicTacToe {
-    class RealPlayer : IPlayer {
+namespace TicTacToe.Player
+{
+    class RealPlayer : IPlayer 
+    {
 
-        public string player;
+        private string _player;
 
         // Gets the real player
-        public string GetPlayer() {
-            return player;
+        public string GetPlayer() 
+        {
+            return _player;
         }
 
         // Sets the player to a real player
-        public void SetPlayer(string player) {
-            this.player = player;
+        public void SetPlayer(string player) 
+        {
+            this._player = player;
         }
 
         /// <summary>
@@ -24,46 +24,48 @@ namespace TicTacToe {
         /// ask the player which position on the board they wish to fill
         /// then it'll fill it.
         /// </summary>
-        /// <param name="TicTacToeBoard">The TicTacToe Board</param>
-        public void Play(string[,] TicTacToeBoard) {
+        /// <param name="ticTacToeBoard">The TicTacToe Board</param>
+        public void Play(string[,] ticTacToeBoard)
+        {
         
-            int positionX; // The X position for the players play
-            int positionY; // The Y position for the players play
+            int positionX;
+            int positionY;
 
             // Prompts for the users X position
-            Console.WriteLine("Enter position X for {0}", player);
-            String userXInput = Console.ReadLine();
-            while(true) { // Strict validation for the users input
-                if (Int32.TryParse(userXInput, out positionX) == true) {
-                    if (positionX <= 2) {
+            Console.WriteLine("Enter position X for {0}", _player);
+            var userXInput = Console.ReadLine();
+            while(true) 
+            { 
+                if (int.TryParse(userXInput, out positionX) == true) 
+                {
+                    if (positionX <= 2)
                         break;
-                    }
                 }
                 Console.WriteLine(); // Blank Line
                 Console.WriteLine("That is not a valid input!  Your input must be (0, 1, 2)");
-                Console.WriteLine("Enter position X for {0}", player);
+                Console.WriteLine("Enter position X for {0}", _player);
                 userXInput = Console.ReadLine();
             }
 
             // Prompts for the users Y position
-            Console.WriteLine("Enter position Y for {0}", player);
-            String userYInput = Console.ReadLine();
-            while (true) { // Strict validation for the users input
-                if (Int32.TryParse(userYInput, out positionY) == true) {
-                    if (positionY <= 2) {
+            Console.WriteLine("Enter position Y for {0}", _player);
+            var userYInput = Console.ReadLine();
+            while (true) 
+            {
+                if (int.TryParse(userYInput, out positionY) == true) 
+                {
+                    if (positionY <= 2)
                         break;
-                    }
                 }
-                Console.WriteLine(); // Blank Line
+                Console.WriteLine();
                 Console.WriteLine("That is not a valid input! Your input must be (0, 1, 2)");
-                Console.WriteLine("Enter position Y for {0}", player);
+                Console.WriteLine("Enter position Y for {0}", _player);
                 userYInput = Console.ReadLine();
             }
 
             // Updates the board with the users play
-            if (TicTacToeBoard[positionX, positionY].Equals(" ")) {
-                TicTacToeBoard[positionX, positionY] = player;
-            }
+            if (ticTacToeBoard[positionX, positionY].Equals(" ")) 
+                ticTacToeBoard[positionX, positionY] = _player;
         }
     }
 }

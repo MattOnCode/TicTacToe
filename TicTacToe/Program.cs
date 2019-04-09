@@ -1,18 +1,19 @@
 ﻿using System;
+using TicTacToe.Game;
+using TicTacToe.Player;
 
 namespace TicTacToe {
     class Program {
-
         static void Main(string[] args) {
-            string[,] TicTacToeBoard = new string[3, 3]; // Creates a new board
-            IPlayer player1; // Declares player 1
-            IPlayer player2; // Declares player 2
+            var ticTacToeBoard = new string[3, 3];
+            IPlayer player1;
+            IPlayer player2; 
 
-            GameEngine gameEngine = new GameEngine(); // Creates a new game engine instance
-            GameVisualizer gameVisualizer = new GameVisualizer(); // Creates a new game visualizer instance
-            GameManager gameManager = new GameManager(gameVisualizer, gameEngine); // Creates a new game manager instance
+            var gameEngine = new GameEngine();
+            var gameVisualizer = new GameVisualizer();
+            var gameManager = new GameManager(gameVisualizer, gameEngine);
 
-            gameVisualizer.printInstructions(); // Prints the instructions
+            gameVisualizer.printInstructions();
 
             // Loops until the player has chosen an option
             while (true) {
@@ -27,12 +28,11 @@ namespace TicTacToe {
                     player2 = new AIPlayer();
                     break;
                 }
-                Console.WriteLine(); // Blank line
+                Console.WriteLine();
                 Console.WriteLine("That is not a valid option");
             }
 
-            gameManager.PlayGame(TicTacToeBoard, player1, player2); // Starts a new game
-
+            gameManager.PlayGame(ticTacToeBoard, player1, player2);
         }
     }
 }

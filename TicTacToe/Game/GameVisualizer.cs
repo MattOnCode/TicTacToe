@@ -1,22 +1,25 @@
 ﻿using System;
 
-namespace TicTacToe {
-    class GameVisualizer {
+namespace TicTacToe.Game 
+{
+    class GameVisualizer 
+    {
 
         /// <summary>
         /// Function to print out the current TicTacToe board
         /// </summary>
         /// <param name="ticTacToeBoard">The TicTacToe Board</param>
-        public void PrintTicTacToeBoard(string[,] ticTacToeBoard) {
+        public void PrintTicTacToeBoard(string[,] ticTacToeBoard) 
+        {
             Console.WriteLine();
             Console.WriteLine("-Board-");
             Console.WriteLine();
-            for (int i = 0; i < ticTacToeBoard.GetLength(0); i++) {
+            for (var i = 0; i < ticTacToeBoard.GetLength(0); i++) 
+            {
                 Console.Write("|");
-                for (int j = 0; j < ticTacToeBoard.GetLength(0); j++) {
-                    Console.Write(ticTacToeBoard[i, j] + "|"); // Prints out each tile
-                }
-                Console.WriteLine(); // Starts new line
+                for (var j = 0; j < ticTacToeBoard.GetLength(0); j++)
+                    Console.Write(ticTacToeBoard[i, j] + "|");
+                Console.WriteLine();
             }
         }
 
@@ -24,18 +27,20 @@ namespace TicTacToe {
         /// Function to fill a newly created TicTacToe Board with empty tiles
         /// </summary>
         /// <param name="ticTacToeBoard">The TicTacToe Board</param>
-        public void InitalizeBoard(string[,] ticTacToeBoard) {
-            for (int i = 0; i < ticTacToeBoard.GetLength(0); i++) {
-                for (int j = 0; j < ticTacToeBoard.GetLength(0); j++) {
-                    ticTacToeBoard[i, j] = " "; // Fills tile with an empty slot
-                }
+        public void InitalizeBoard(string[,] ticTacToeBoard) 
+        {
+            for (var i = 0; i < ticTacToeBoard.GetLength(0); i++) 
+            {
+                for (var j = 0; j < ticTacToeBoard.GetLength(0); j++)
+                    ticTacToeBoard[i, j] = " ";
             }
         }
 
         /// <summary>
         /// This function prints the instructions for when the applications launched
         /// </summary>
-        public void printInstructions() {
+        public void printInstructions() 
+        {
             Console.WriteLine("What's TicTacToe?");
             Console.WriteLine("Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a");
             Console.WriteLine("paper -and-pencil game for two players, X and O, who take turns");
